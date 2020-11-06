@@ -18,17 +18,6 @@ class BinaryHeap():
         self.a = ArrayUtils()._new_array(10, dtype='<U6') #self.new_array(10,str)
         self.n = 0
 
-    #def new_array(self, n, type):
-        #a = numpy.empty(n, dtype=type)
-        #for i in range(n):
-            #a[i] = type()
-        #return a
-
-        ##temp = []
-        ##for i in range(m):
-            ##temp.append(0)
-        ##self.a = temp
-
     def parent(self,i):
         return int((i-1)/2)
 
@@ -39,25 +28,20 @@ class BinaryHeap():
         return int(2*(i+1))
 
     def add(self,x):
-        #if self.a != None:
         if len(self.a) < self.n+1:
             print('Resizing')
             self.resize()
         self.a[self.n] = x
         self.n += 1
-        #print(self.n)
         self.bubble_up(self.n-1)
         print(self.a)
-        #print(type(self.a))
         x = 'here'
-        #print(type(x))
         return True
 
     def bubble_up(self,i):
         p = self.parent(i)
-        #print(i)
         while i>0 and self.a[i] < self.a[p]:
-            self.a[i], self.a[p] = self.a[p], self.a[i] #swap i, p
+            self.a[i], self.a[p] = self.a[p], self.a[i] #swapping index of i & p
             i = p
             p = self.parent(i)
         
@@ -94,9 +78,6 @@ class BinaryHeap():
         for i in range(self.n):
             temp[i] = self.a[i]
         self.a = temp
-        #b = new_array(2*self.n)
-        #b = self.a.copy()
-        #self.a = b
 
     def is_empty(self):
         if self.n == 0:
@@ -115,13 +96,6 @@ bh.add('9')
 bh.add('11')
 bh.add('12')
 
-'''
-with open(mobydick.txt,'r') as f:
-    for line in f:
-        line = re.sub('[!#?,.:";\']', '', line).lower()
-        token = line.split()
-        for t in token:
-            bh.add(t)
-'''
+
 
 
